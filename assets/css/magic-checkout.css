@@ -320,6 +320,11 @@
     width: 46px;
     height: 46px;
     border: none;
+    background-color: transparent;
+    outline:none;
+}
+#magic-checkout .credit-card div input[type=radio]:checked:after{
+    display: none;
 }
 
 #magic-checkout .credit-card div label {
@@ -338,6 +343,8 @@
     max-width: 100%;
     max-height: 32px;
     width: auto;
+    display: inline-block;
+
 }
 
 #magic-checkout .related-product {
@@ -446,6 +453,7 @@
 
 #magic-checkout .more img {
     max-width: 25%;
+    display: inline-block;
 }
 
 #magicLoader {
