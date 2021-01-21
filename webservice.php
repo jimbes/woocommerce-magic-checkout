@@ -98,6 +98,7 @@ function submitFormPopup() {
 		$magicorder->createOrder();
 		$_GET['key'] = $magicorder->getOrder()->order_key;
 		$_GET['pay_for_order'] = "true";
+		header( "Content-Type: application/json" );
 		echo json_encode(
 			["key"=>$magicorder->getOrder()->order_key,
 			 "pay_for_order"=>"true",

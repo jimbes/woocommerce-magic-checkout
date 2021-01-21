@@ -173,8 +173,11 @@ jQuery(document).ready(function ($) {
                 }
             }).complete(function (result) {
                 requestCodePromoSent = false;
-                //if (result.responseJSON === true) {
-                if (result === true) {
+                var resultats = result;
+                if(result.responseJSON !== undefined){
+                    resultats = result.responseJSON;
+                }
+                if (resultats === true) {
                     $("#magic-checkout-form input[name='codePromoApply']").val("yes");
                     $("#magic-checkout-form #codepromo").removeClass("invalid");
                     $("#magic-checkout-form #submitPromo").removeClass("invalid");
@@ -233,8 +236,10 @@ jQuery(document).ready(function ($) {
             dataType: "json",
             data: form.serialize()
         }).complete(function (result) {
-            //var resultats = result.responseJSON;
             var resultats = result;
+            if(result.responseJSON !== undefined){
+                resultats = result.responseJSON;
+            }
             if (resultats === 401) {
                 removeLoader();
                 $("#magicPaiementContainer").remove();
