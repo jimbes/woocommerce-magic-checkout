@@ -80,6 +80,8 @@ jQuery(document).ready(function ($) {
     $(".magic-button").on("click", function (e) {
         var idProduct = $(this).data("idproduct");
         var container = "<div id='magicPopupContainer'></div>";
+        var textvalidate = $(this).data("textvalidate");
+        var textpayment = $(this).data("textpayment");
         $("body").append(container);
         showLoader("magicPopupContainer");
         $.ajax({
@@ -88,7 +90,9 @@ jQuery(document).ready(function ($) {
             dataType: "html",
             data: {
                 "action": "getPopupDisplay",
-                "idproduct": idProduct
+                "idproduct": idProduct,
+                "textvalidate": textvalidate,
+                "textpayment": textpayment
             }
         })
             .success(function (result) {

@@ -8,10 +8,12 @@
 
 function popupDisplay() {
 	$product_id = intval( $_POST["idproduct"] );
+	$textValidate =  $_POST["textvalidate"] ;
+	$textPayment = $_POST["textpayment"] ;
 	WC()->cart->empty_cart();
 	WC()->session->set('cart', array());
 	WC()->cart->add_to_cart( $product_id );
-	popup( $product_id );
+	popup( $product_id,$textValidate,$textPayment  );
 	wp_die();
 }
 function clearCart(){
@@ -96,7 +98,13 @@ function submitFormPopup() {
 		$magicorder->createOrder();
 		$_GET['key'] = $magicorder->getOrder()->order_key;
 		$_GET['pay_for_order'] = "true";
-		echo json_encode(["key"=>$magicorder->getOrder()->order_key,"pay_for_order"=>"true","idOrder"=>$magicorder->getOrder()->ID,"paiementMethod"=>$magicorder->getCreditCard(),"user" => $magicorder->getUserWordpress()->user_email]);
+		echo json_encode(
+			["key"=>$magicorder->getOrder()->order_key,
+			 "pay_for_order"=>"true",
+			 "idOrder"=>$magicorder->getOrder()->ID,
+			 "paiementMethod"=>$magicorder->getCreditCard(),
+			 "user" => $magicorder->getUserWordpress()->user_email,
+			 "textpayment" => $_POST["textpayment"]]);
 		wp_die();
 	}
 	wp_die();

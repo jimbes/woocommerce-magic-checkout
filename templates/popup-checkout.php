@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-function popup( $idProduct ) {
+function popup( $idProduct,$textValidate,$textPayment ) {
 	$product         = wc_get_product( $idProduct );
 	$crosssell       = wc_get_product( get_post_meta( $idProduct, '_crosssell_ids' )[0][0] );
 	$active_gateways = array();
@@ -19,6 +19,7 @@ function popup( $idProduct ) {
             <input type="hidden" name="action" value="submitFormPopup">
             <input type="hidden" name="userKnow" value="no">
             <input type="hidden" name="codePromoApply" value="no">
+            <input type="hidden" name="textpayment" value="<?php echo $textPayment ?>" >
             <h2 id="productName" class="titleProduct"><?php echo $product->get_title() ?></h2>
             <hr/>
             <div class="info">
@@ -159,7 +160,7 @@ function popup( $idProduct ) {
                 </div>
             </div>
             <div class="action">
-                <input id="submitMagic" type="submit" value="ACHETER">
+                <input id="submitMagic" type="submit" value="<?php echo $textValidate ?>">
             </div>
             <div class="more">
                 <img src="<?php echo esc_url( plugins_url( '/assets/images/secured.png', dirname( __FILE__ ) ) ) ?>"

@@ -67,9 +67,16 @@ function magic_checkout_shortcode( $atts = [], $content = null, $tag = '' ) {
 	$magic_checkout_atts = shortcode_atts(
 		array(
 			'id' => '1',
+			'text_button'   => 'Acheter',
+			'text_validate' => 'Acheter',
+			'text_payment'  => 'Valider'
 		), $atts, $tag
 	);
-	ob_start();getButton($magic_checkout_atts['id']);
+	ob_start();
+	getButton(  $magic_checkout_atts['id'],
+		$magic_checkout_atts["text_button"],
+		$magic_checkout_atts["text_validate"],
+		$magic_checkout_atts["text_payment"] );
 	return ob_get_clean();
 }
 
