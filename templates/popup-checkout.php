@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-function popup( $idProduct,$textValidate,$textPayment  ) {
+function popup( $idProduct ) {
 	$product         = wc_get_product( $idProduct );
 	$crosssell       = wc_get_product( get_post_meta( $idProduct, '_crosssell_ids' )[0][0] );
 	$active_gateways = array();
@@ -19,7 +19,6 @@ function popup( $idProduct,$textValidate,$textPayment  ) {
             <input type="hidden" name="action" value="submitFormPopup">
             <input type="hidden" name="userKnow" value="no">
             <input type="hidden" name="codePromoApply" value="no">
-            <input type="hidden" name="textpayment" value="<?php echo $textPayment ?>" >
             <h2 id="productName" class="titleProduct"><?php echo $product->get_title() ?></h2>
             <hr/>
             <div class="info">
@@ -75,7 +74,7 @@ function popup( $idProduct,$textValidate,$textPayment  ) {
                     <label for="crosssell">
 
 						<?php
-						$paiementType ="";
+						$paiementType = "";
 						if ( isset( $crosssell->get_attributes()["paiement"] ) && ! empty( $crosssell->get_attributes()["paiement"] ) ) {
 							switch ( $crosssell->get_attributes()["paiement"] ) {
 								case "Mensuel" :
@@ -106,7 +105,7 @@ function popup( $idProduct,$textValidate,$textPayment  ) {
 						?>
 
 						<?php echo $intro . " " . $crosssell->get_title(); ?>
-                        à <?php echo $crosssell->get_price() . "€ ". $paiementType . $outro; ?>
+                        à <?php echo $crosssell->get_price() . "€ " . $paiementType . $outro; ?>
                     </label>
                 </div>
 			<?php } ?>
@@ -119,11 +118,48 @@ function popup( $idProduct,$textValidate,$textPayment  ) {
                 <hr/>
                 <div>
                     <h3>Total :</h3>
-                    <div id="totalPrice"><?php echo WC()->cart->get_cart_total(); ?> TTC</div>
+
+					<?php
+
+                    $tempCart = array();
+                    foreach (WC()->cart->cart_contents as $row => $val){
+	                    array_push($tempCart, $val["data"]);
+                    }
+
+					if ( $tempCart[0] instanceof WC_Product_Subscription ) {
+						$period = "";
+						switch ( $tempCart[0]->subscription_period ) {
+							case "month":
+								$period = "/ mois";
+								break;
+							case "annual":
+								$period = "/ an";
+								break;
+							case "day":
+								$period = "/ jour";
+								break;
+							case "week":
+								$period = "/ semaine";
+								break;
+							default :
+								$period = "/ " . $tempCart[0]->subscription_period;
+								break;
+						}
+
+						echo '<div id="totalPrice">' . $tempCart[0]->subscription_price . " " . $period . ' TTC</div>';
+						if ( intval($tempCart[0]->subscription_trial_length) > 0 ) {
+							echo "<div class='trialTexte'>Une période d'essaie de" . $tempCart[0]->subscription_trial_length . " jours, puis le paiement récurrent</div>";
+						}
+					} else {
+						echo '<div id="totalPrice">' . WC()->cart->get_cart_total() . ' TTC</div>';
+					}
+					?>
+
+
                 </div>
             </div>
             <div class="action">
-                <input id="submitMagic" type="submit" value="<?php echo $textValidate ?>">
+                <input id="submitMagic" type="submit" value="ACHETER">
             </div>
             <div class="more">
                 <img src="<?php echo esc_url( plugins_url( '/assets/images/secured.png', dirname( __FILE__ ) ) ) ?>"

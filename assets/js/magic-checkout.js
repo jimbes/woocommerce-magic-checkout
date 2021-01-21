@@ -79,8 +79,6 @@ jQuery(document).ready(function ($) {
 
     $(".magic-button").on("click", function (e) {
         var idProduct = $(this).data("idproduct");
-        var textvalidate = $(this).data("textvalidate");
-        var textpayment = $(this).data("textpayment");
         var container = "<div id='magicPopupContainer'></div>";
         $("body").append(container);
         showLoader("magicPopupContainer");
@@ -90,9 +88,7 @@ jQuery(document).ready(function ($) {
             dataType: "html",
             data: {
                 "action": "getPopupDisplay",
-                "idproduct": idProduct,
-                "textvalidate": textvalidate,
-                "textpayment": textpayment
+                "idproduct": idProduct
             }
         })
             .success(function (result) {
@@ -249,7 +245,7 @@ jQuery(document).ready(function ($) {
                 if($(".loginInfo").find("input").length !== 0) {
                     $(".loginInfo").html("<p class='emailConnected'>" + resultats.user + "</p>");
                 }
-                $("#magicPaiementContainer").append("<div style='display:none' id='magic-paiement' class='" + resultats.paiementMethod + "'><iframe data-textpayment='"+resultats.textpayment+"' name='paiementIframe' id='paiementIframe' src='/valider-commande/payer-la-commande/" + resultats.idOrder + "/?ismagic=true&pay_for_order=" + resultats.pay_for_order + "&key=" + resultats.key + "&paiementMethod=" + resultats.paiementMethod + "'></iframe></div>");
+                $("#magicPaiementContainer").append("<div style='display:none' id='magic-paiement' class='" + resultats.paiementMethod + "'><iframe name='paiementIframe' id='paiementIframe' src='/valider-commande/payer-la-commande/" + resultats.idOrder + "/?ismagic=true&pay_for_order=" + resultats.pay_for_order + "&key=" + resultats.key + "&paiementMethod=" + resultats.paiementMethod + "'></iframe></div>");
                 $("#magic-paiement").append(exitHtml(resultats.idOrder));
             }
         });

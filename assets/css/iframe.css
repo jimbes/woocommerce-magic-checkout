@@ -15,7 +15,8 @@ header {
     padding: 0;
 }
 
-#page-container .et_pb_section.et_pb_section_0_tb_body.et_pb_with_background.et_section_regular .et_pb_row {
+#page-container .et_pb_section.et_pb_section_0_tb_body.et_pb_with_background.et_section_regular .et_pb_row ,
+body.woocommerce-order-pay #main-content .container{
     width: 100%;
     max-width: 100%;
     border: none;
@@ -27,10 +28,7 @@ header {
     background-color: transparent;
 }
 
-#order_review #payment .wc_payment_method label[for=payment_method_stripe],
-#order_review #payment .wc_payment_method label[for=stripe-exp-element],
-#order_review #payment .wc_payment_method label[for=stripe-cvc-element],
-#order_review #payment .wc_payment_method label[for=stripe-card-element] {
+#order_review #payment .wc_payment_method label {
     display: none;
 }
 
@@ -56,6 +54,8 @@ header {
     display: none;
 }
 
+body.woocommerce-order-pay,
+body.woocommerce-order-pay #main-content,
 body.custom-background,
 body.custom-background .et_pb_row_0_tb_body,
 body.custom-background .et_pb_section {
@@ -115,11 +115,20 @@ body.custom-background .et_pb_post_content_0_tb_body {
     font-weight: 700;
     text-transform: capitalize;
 }
+.woocommerce-checkout #payment div.payment_box .form-row.form-row-wide{
+    padding: 0 2px;
+}
+.woocommerce-checkout #payment div.payment_box .form-row.form-row-first,
+.woocommerce-checkout #payment div.payment_box .form-row.form-row-last{
+    float: left!important;
+    width: 50%!important;
+    padding: 0 2px;
+}
 
 .woocommerce-checkout #payment div.payment_box .form-row .wc-stripe-elements-field {
     padding: 10px 10px 10px 50px !important;
     border: none;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 .woocommerce-checkout #payment div.payment_box .form-row #stripe-card-element {
@@ -220,6 +229,10 @@ body.custom-background .et_pb_post_content_0_tb_body {
 
 
 footer {
+    display: none;
+}
+
+h1.entry-title.main_title{
     display: none;
 }
 
