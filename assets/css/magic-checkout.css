@@ -95,6 +95,7 @@
     background-color: #dcb6c1;
     padding: 15px;
     border: solid 3px white;
+    box-sizing: border-box;
 }
 
 

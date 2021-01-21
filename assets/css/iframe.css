@@ -78,8 +78,9 @@ body.woocommerce-order-pay .woocommerce-order-pay{
 }
 body.custom-background .woocommerce fieldset ,
 body.woocommerce-order-pay .woocommerce fieldset {
-    margin: 0;
+    margin: 0!important;
     display: block;
+    padding: 1.5rem 1.5rem .5rem 1.5rem !important;
 }
 
 body.custom-background .woocommerce fieldset .wc-stripe-elements-field.StripeElement ,
@@ -134,13 +135,13 @@ body.woocommerce-order-pay .et_pb_post_content_0_tb_body {
     text-transform: capitalize;
 }
 .woocommerce-checkout #payment div.payment_box .form-row.form-row-wide{
-    padding: 0 2px 4px;
+    padding: 0 2px 4px!important;
 }
 .woocommerce-checkout #payment div.payment_box .form-row.form-row-first,
 .woocommerce-checkout #payment div.payment_box .form-row.form-row-last{
     float: left!important;
     width: 50%!important;
-    padding: 0 2px;
+    padding: 0 2px!important;
     display: block;
 }
 
