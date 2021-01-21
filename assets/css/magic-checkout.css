@@ -1,0 +1,541 @@
+#magicPopupContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    z-index: 100000000;
+}
+
+#magicPaiementContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    z-index: 100000001;
+}
+
+
+.magic-button {
+    padding: 0.5rem 2rem;
+    text-transform: capitalize;
+    font-weight: bold;
+    color: white;
+    background-color: #2e2c45;
+    border: #2e2c45 solid 1px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.magic-button:hover {
+    border: #2e2c45 solid 1px;
+    background-color: #fffefe;
+    color: #2e2c45;
+}
+
+#magic-checkout {
+    max-width: 600px;
+    margin: auto;
+    align-self: center;
+    background-color: white;
+    padding: 2rem 0;
+    border-radius: 7px;
+    position: relative;
+}
+
+#magic-checkout #magic-checkout-form {
+    padding: 0 2.5rem;
+}
+
+#magic-checkout .closeIframe,
+#magic-paiement .closeIframe {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+#magic-paiement {
+    max-width: 600px;
+    margin: auto;
+    align-self: center;
+    background-color: #ededed;
+    padding: 2rem 2.5rem;
+    border-radius: 7px;
+    text-align: center;
+    position: relative;
+}
+
+#magicPaiementContainer #magic-paiement #paiementIframe {
+    width: 500px;
+    margin: auto;
+    height: 400px;
+}
+
+#magicPaiementContainer #magic-paiement.Stripe {
+    padding: 3.5rem 1.5rem 1rem 1.5rem;
+}
+
+#magicPaiementContainer #magic-paiement.Stripe:before {
+    content: url(../images/cadenas.png);
+    position: absolute;
+    top: -30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    left: calc(50% - 35px);
+    background-color: #dcb6c1;
+    padding: 15px;
+    border: solid 3px white;
+}
+
+
+#magicPaiementContainer #magic-paiement.Stripe #paiementIframe {
+    width: 350px;
+    margin: auto;
+    height: 280px;
+}
+
+
+#magic-checkout a,
+#magic-checkout input,
+#magic-checkout p,
+#magic-checkout h2,
+#magic-checkout h3,
+#magic-checkout span {
+    font-family: 'Raleway',Helvetica,Arial,Lucida,sans-serif!important;
+}
+
+#magic-checkout .titleProduct {
+    text-transform: uppercase;
+    font-size: 29px;
+    font-style: normal !important;
+    font-family: 'Raleway',Helvetica,Arial,Lucida,sans-serif!important;
+    font-weight: 500 !important;
+    color: #01001D;
+}
+
+#magic-checkout .titleProduct + hr {
+    border: 1px solid rgba(220, 182, 193, 0.8);
+    width: 60px;
+    display: inline-block;
+    box-shadow: none;
+    margin-bottom: 15px;
+}
+
+#magic-checkout input[type=text],
+#magic-checkout input[type=email],
+#magic-checkout input[type=password],
+#magic-checkout .credit-card label {
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: #EFEFEF;
+}
+
+#magic-checkout input[type=text],
+#magic-checkout input[type=email],
+#magic-checkout input[type=password] {
+    font-weight: 600;
+}
+
+#magic-checkout input[type=text]::placeholder,
+#magic-checkout input[type=email]::placeholder,
+#magic-checkout input[type=password]::placeholder {
+    color: #a2a2a2;
+    font-weight: 600;
+}
+
+
+#magic-checkout input[type=checkbox] {
+    align-self: center;
+    background-color: #EFEFEF;
+    border-radius: 4px;
+    padding: 3px;
+    border: none;
+    width: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 20px;
+    cursor: pointer;
+}
+
+#magic-checkout input[type=checkbox]:checked {
+    position: relative;
+}
+
+#magic-checkout input[type=checkbox]:checked:before {
+    content: '\2713';
+    display: block;
+    text-align: center;
+    color: #41B883;
+    position: absolute;
+    left: 5px;
+    top: 0px;
+    font-size: 15px;
+}
+
+
+#magic-checkout .info .name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 0 20px 0;
+}
+
+#magic-checkout .info .name input {
+    width: 48%;
+}
+
+#magic-checkout .info .loginInfo input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#magic-checkout .info .loginInfo input.hide {
+    display: none;
+}
+
+#magic-checkout .info .loginInfo input.show {
+    display: inline-block;
+}
+
+#magic-checkout .info .loginInfo .emailConnected {
+    color: #a2a2a2;
+    margin-bottom: 20px;
+}
+
+#magic-checkout .info .loginInfo input.error {
+    border: solid 1px red;
+    padding: 10px 12px;
+}
+
+#magic-checkout .info .loginInfo p.error {
+    margin-top: -20px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: red;
+}
+#magic-checkout .info .name input,
+#magic-checkout .info .loginInfo input,
+#magic-checkout .info .loginInfo .emailConnected,
+#magic-checkout .codepromo input,
+#magic-checkout .related-product label,
+#magic-checkout .accept label{
+    font-size: 0.9rem;
+}
+
+#magic-checkout .codepromo {
+    margin: 0 0 5px 0;
+    position: relative;
+}
+
+#magic-checkout .codepromo a {
+    display: block;
+    text-decoration: underline;
+    color: #a2a2a2;
+    font-weight: normal;
+    font-size: 11px;
+    cursor: pointer;
+    line-height: 16px;
+}
+
+#magic-checkout .codepromo input {
+    width: 100%;
+}
+
+#magic-checkout .codepromo input.hide,
+#magic-checkout .codepromo button.hide {
+    display: none;
+}
+
+#magic-checkout .codepromo input.valid,
+#magic-checkout .codepromo button.valid {
+    color: #3ec73e;
+}
+
+#magic-checkout .codepromo button.show.valid {
+    border: #3ec73e solid 1px;
+}
+
+#magic-checkout .codepromo input.invalid,
+#magic-checkout .codepromo button.invalid {
+    color: red;
+}
+
+#magic-checkout .codepromo button.show.invalid {
+    border: red solid 1px;
+}
+
+#magic-checkout .codepromo input.show {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 40px;
+}
+
+#magic-checkout .codepromo button.show {
+    position: absolute;
+    display: inline-block;
+    right: 12px;
+    bottom: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: underline;
+    background-color: transparent;
+    font-size: 0.8rem;
+    font-family: 'Raleway', Helvetica,Arial,Lucida,sans-serif;
+    line-height: 40px;
+
+}
+
+#magic-checkout .credit-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 0 20px 0;
+}
+
+#magic-checkout .credit-card div {
+    width: 48%;
+    text-align: center;
+    margin-top: -20px;
+}
+
+#magic-checkout .credit-card div input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0 0 -53px 0;
+    padding: 0;
+    width: 46px;
+    height: 46px;
+    border: none;
+}
+
+#magic-checkout .credit-card div label {
+    width: 100%;
+    text-align: center;
+    height: 46px;
+    padding: 7px 12px;
+    display: inline-block;
+}
+
+#magic-checkout .credit-card div input:checked + label {
+    background-color: #bcbcbc;
+}
+
+#magic-checkout .credit-card div label img {
+    max-width: 100%;
+    max-height: 32px;
+    width: auto;
+}
+
+#magic-checkout .related-product {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 0 20px 0;
+}
+
+#magic-checkout .related-product .image {
+    width: 15%;;
+}
+
+#magic-checkout .related-product .image img {
+    border-radius: 8px
+}
+
+#magic-checkout .related-product input {
+    align-self: center;
+}
+
+#magic-checkout .related-product label {
+    width: 75%;
+    align-self: center;
+    color: #01001D;
+    font-weight: 700;
+    line-height: 1rem;
+}
+
+#magic-checkout .accept {
+    display: flex;
+    margin: 0 0 20px 0;
+}
+
+#magic-checkout .accept label {
+    align-self: center;
+    color: #a2a2a2;
+    font-weight: 600;
+}
+
+#magic-checkout .accept label a {
+    color: #a2a2a2;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+#magic-checkout .accept input {
+    align-self: center;
+    margin-right: 1rem;
+    margin-left: 0;
+}
+
+#magic-checkout .recap {
+    margin: 0 0 10px 0;
+}
+
+#magic-checkout .recap hr {
+    border: 1px solid rgba(220, 182, 193, 0.8);
+    width: 35px;
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+#magic-checkout .recap div h3 {
+    color: rgba(220, 182, 193, 1);
+    font-weight: 600;
+    font-size: 1.3rem;
+    display: inline-block;
+}
+
+#magic-checkout .recap div #totalPrice {
+    color: #2e2c45;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 1.2rem;
+}
+
+#magic-checkout .action {
+    margin: 0 0 20px 0;
+}
+
+#magic-checkout .action input {
+    display: inline-block;
+    width: 100%;
+    border: none;
+    padding: 10px 20px;
+    background-color: rgba(220, 182, 193, 1);
+    color: white;
+    text-transform: capitalize;
+    font-size: 1rem;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#magic-checkout .action input:disabled {
+    background-color: #EFEFEF;
+    color: #01001D;
+    cursor: wait;
+}
+
+#magic-checkout .more {
+    text-align: right;
+}
+
+#magic-checkout .more img {
+    max-width: 25%;
+}
+
+#magicLoader {
+    margin: auto;
+    align-self: center;
+    text-align: center;
+}
+
+#magicLoader.inactive {
+    display: none;
+}
+
+#magicLoader .loaderMagic {
+    border: 4px solid #8f8f8f;
+    border-top: 4px solid #FFF;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+#magic-checkout .recap .woocommerce-Price-amount {
+    font-family: 'Lato','Raleway',Helvetica,Arial,Lucida,sans-serif !important;
+    font-size: 23px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 767px) {
+    #magic-checkout #magic-checkout-form {
+        overflow-y: auto;
+        height: 90vh;
+    }
+
+    #magic-checkout .titleProduct {
+        font-weight: 600 !important;
+        text-align: center;
+    }
+
+    #magic-checkout .titleProduct + hr {
+        display: block;
+        margin: 0 auto 25px;
+        width: 150px;
+    }
+
+    #magic-checkout .credit-card div label {
+        padding: 8px 12px;
+    }
+
+    #magic-checkout .credit-card div label img {
+        vertical-align: middle;
+    }
+
+    #magic-checkout .related-product {
+        flex-wrap: wrap;
+    }
+
+    #magic-checkout .related-product .image {
+        width: 100%;
+        text-align: center;
+    }
+
+    #magic-checkout .related-product .image img {
+        width: auto;
+        max-height: 155px;
+        max-width: 50%;
+    }
+
+    #magic-checkout .related-product label {
+        width: 88%;
+    }
+
+    #magic-checkout .related-product input {
+        margin-left: 0;
+    }
+
+    #magic-checkout .accept label {
+        line-height: 15px;
+    }
+
+    #magicPaiementContainer #magic-paiement.Stripe #paiementIframe {
+        height: 50vh;
+
+    }
+}
