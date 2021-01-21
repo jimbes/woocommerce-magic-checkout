@@ -104,6 +104,7 @@ function submitFormPopup() {
 			 "idOrder"=>$magicorder->getOrder()->ID,
 			 "paiementMethod"=>$magicorder->getCreditCard(),
 			 "user" => $magicorder->getUserWordpress()->user_email,
+			 "urlOrderPay" => $magicorder->getOrder()->get_checkout_payment_url(),
 			 "textpayment" => $_POST["textpayment"]]);
 		wp_die();
 	}

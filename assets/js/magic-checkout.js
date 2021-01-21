@@ -173,7 +173,8 @@ jQuery(document).ready(function ($) {
                 }
             }).complete(function (result) {
                 requestCodePromoSent = false;
-                if (result.responseJSON === true) {
+                //if (result.responseJSON === true) {
+                if (result === true) {
                     $("#magic-checkout-form input[name='codePromoApply']").val("yes");
                     $("#magic-checkout-form #codepromo").removeClass("invalid");
                     $("#magic-checkout-form #submitPromo").removeClass("invalid");
@@ -232,7 +233,8 @@ jQuery(document).ready(function ($) {
             dataType: "json",
             data: form.serialize()
         }).complete(function (result) {
-            var resultats = result.responseJSON;
+            //var resultats = result.responseJSON;
+            var resultats = result;
             if (resultats === 401) {
                 removeLoader();
                 $("#magicPaiementContainer").remove();
@@ -249,16 +251,17 @@ jQuery(document).ready(function ($) {
                 if($(".loginInfo").find("input").length !== 0) {
                     $(".loginInfo").html("<p class='emailConnected'>" + resultats.user + "</p>");
                 }
-                $("#magicPaiementContainer").append("<div style='display:none' id='magic-paiement' class='" + resultats.paiementMethod + "'><iframe name='paiementIframe' id='paiementIframe' src='/valider-commande/payer-la-commande/" + resultats.idOrder + "/?ismagic=true&pay_for_order=" + resultats.pay_for_order + "&key=" + resultats.key + "&paiementMethod=" + resultats.paiementMethod + "'></iframe></div>");
+
+                $("#magicPaiementContainer").append("<div style='display:none' id='magic-paiement' class='" + resultats.paiementMethod + "'><iframe name='paiementIframe' id='paiementIframe' src='" + resultats.urlOrderPay + "&paiementMethod=" + resultats.paiementMethod + "&ismagic=true '></iframe></div>");
                 $("#magic-paiement").append(exitHtml(resultats.idOrder));
+                setTimeout(function(){
+                    $("#magic-paiement").css({"display": "block"});
+                    removeLoader();
+                },1500);
             }
         });
     }).on("click", ".closeIframe", function () {
         magicClosePopup($(this));
-    });
-    $("#paiementIframe").livequery(function (e) {
-        $("#magic-paiement").css({"display": "block"});
-        removeLoader();
     });
 });
 

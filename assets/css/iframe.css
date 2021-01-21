@@ -6,8 +6,17 @@ html {
     margin-top: 0px !important;
 }
 
-header {
-    display: none;
+header,
+footer,
+h1.entry-title.main_title,
+.widget-area{
+    display: none!important;
+}
+.site-main{
+    padding:0
+}
+.site-main div.entry-content{
+    margin: 0;
 }
 
 #page-container .et_pb_section.et_pb_section_0_tb_body.et_pb_with_background.et_section_regular {
@@ -30,6 +39,7 @@ body.woocommerce-order-pay #main-content .container{
 
 #order_review #payment .wc_payment_method label {
     display: none;
+    margin: 0;
 }
 
 #order_review #payment .wc_payment_method .payment_box:before {
@@ -62,27 +72,35 @@ body.custom-background .et_pb_section {
     background-color: #ededed;
     padding: 0;
 }
+body.custom-background .woocommerce,
+body.woocommerce-order-pay .woocommerce-order-pay{
+    margin: 0;
+}
+body.custom-background .woocommerce fieldset ,
+body.woocommerce-order-pay .woocommerce fieldset {
+    margin: 0;
+    display: block;
+}
 
-body.custom-background .woocommerce fieldset {
+body.custom-background .woocommerce fieldset .wc-stripe-elements-field.StripeElement ,
+body.woocommerce-order-pay .woocommerce fieldset .wc-stripe-elements-field.StripeElement {
     margin: 0;
 }
 
-body.custom-background .woocommerce fieldset .wc-stripe-elements-field.StripeElement {
-    margin: 0;
-}
-
-body.custom-background .et_pb_row_0_tb_body {
+body.custom-background .et_pb_row_0_tb_body ,
+body.woocommerce-order-pay .et_pb_row_0_tb_body {
     margin: 0;
     padding: 0;
 }
 
-body.custom-background .et_pb_post_content_0_tb_body {
+body.custom-background .et_pb_post_content_0_tb_body ,
+body.woocommerce-order-pay .et_pb_post_content_0_tb_body {
     padding: 0;
 }
 
 #order_review #payment .wc_payment_methods.payment_methods.methods {
     border: none;
-    padding: 0 2rem;
+    padding: 0rem;
 }
 
 #order_review #payment button#place_order {
@@ -116,13 +134,14 @@ body.custom-background .et_pb_post_content_0_tb_body {
     text-transform: capitalize;
 }
 .woocommerce-checkout #payment div.payment_box .form-row.form-row-wide{
-    padding: 0 2px;
+    padding: 0 2px 4px;
 }
 .woocommerce-checkout #payment div.payment_box .form-row.form-row-first,
 .woocommerce-checkout #payment div.payment_box .form-row.form-row-last{
     float: left!important;
     width: 50%!important;
     padding: 0 2px;
+    display: block;
 }
 
 .woocommerce-checkout #payment div.payment_box .form-row .wc-stripe-elements-field {
@@ -227,14 +246,6 @@ body.custom-background .et_pb_post_content_0_tb_body {
     line-height: 1.4;
 }
 
-
-footer {
-    display: none;
-}
-
-h1.entry-title.main_title{
-    display: none;
-}
 
 @media (max-width: 767px) {
     body.custom-background .woocommerce fieldset .form-row.form-row-first {
