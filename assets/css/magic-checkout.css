@@ -26,16 +26,16 @@
     text-transform: capitalize;
     font-weight: bold;
     color: white;
-    background-color: #2e2c45;
-    border: #2e2c45 solid 1px;
+    background-color: #01001d;
+    border: #01001d solid 1px;
     font-size: 1rem;
     cursor: pointer;
 }
 
 .magic-button:hover {
-    border: #2e2c45 solid 1px;
+    border: #01001d solid 1px;
     background-color: #fffefe;
-    color: #2e2c45;
+    color: #01001d;
 }
 
 #magic-checkout {
@@ -266,6 +266,7 @@
 
 #magic-checkout .codepromo button.show.valid {
     border: #3ec73e solid 1px;
+    display: none;
 }
 
 #magic-checkout .codepromo input.invalid,
@@ -423,6 +424,14 @@
     font-weight: bold;
     display: inline-block;
     font-size: 1.2rem;
+}
+#magic-checkout .recap div #totalPrice .price_coupon_info{
+    font-size: 14px;
+    font-weight: normal;
+    display: inline;
+}
+#magic-checkout .recap div #totalPrice .price_coupon_info .woocommerce-Price-amount.amount{
+    font-size: 14px;
 }
 
 #magic-checkout .action {

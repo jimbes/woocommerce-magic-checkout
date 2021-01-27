@@ -15,16 +15,27 @@ function submitWait(active) {
 
 function updateTotalPrice() {
     submitWait(false);
+    var textAplyCoupon = "au lieu de";
     jQuery.ajax({
         type: "POST",
         url: ajaxurl,
-        dataType: "html",
+        dataType: "json",
         data: {
             "action": "getTotalPrice"
         }
     }).success(function (result) {
+        console.log(result);
         submitWait(true);
-        jQuery("#totalPrice").html(result);
+        var resultats = result;
+        if(result.responseJSON !== undefined){
+            resultats = result.responseJSON;
+        }
+        if(resultats.sold_price !== undefined ){
+            jQuery("#totalPrice").html(resultats.sold_price + "<div class='price_coupon_info'> " + textAplyCoupon + " " + resultats.original_price + "</div>");
+        }else{
+            jQuery("#totalPrice").html(resultats.original_price);
+        }
+
     });
 }
 

@@ -32,7 +32,22 @@ function emailExist() {
 }
 
 function getTotalPrice() {
-	echo WC()->cart->get_cart_total(). " TTC";
+	header( "Content-Type: application/json" );
+
+	if(count(WC()->cart->get_applied_coupons()) > 0) {
+		echo json_encode(
+			[
+				"original_price" => WC()->cart->get_cart_subtotal() . " TTC",
+				"sold_price"   => WC()->cart->get_cart_total() . " TTC"
+			]
+		);
+	}else{
+		echo json_encode(
+			[
+				"original_price" => WC()->cart->get_cart_total() . " TTC"
+			]
+		);
+	}
 	wp_die();
 }
 
