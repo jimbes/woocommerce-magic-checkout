@@ -147,7 +147,11 @@ jQuery(document).ready(function ($) {
                     }
                 }).complete(function (result) {
                     requestEmailSent = false;
-                    if (result.responseJSON === true) {
+                    var resultats = result;
+                    if(result.responseJSON !== undefined){
+                        resultats = result.responseJSON;
+                    }
+                    if (resultats === true) {
                         $("#magic-checkout-form #password").removeClass("hide").addClass("show").prop("required", true);
                         $("#magic-checkout-form input[name='userKnow']").val("yes");
                     }else{

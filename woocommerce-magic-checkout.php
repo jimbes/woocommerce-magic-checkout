@@ -5,7 +5,7 @@
  * Description: Popup Checkout For Woocommerce
  * Author: Jimmy Besse
  * Author URI: https://www.jimmy-besse.fr/
- * Version: 1.1.1
+ * Version: 1.1.2
  * Requires at least: 4.4
  * Tested up to: 5.5
  * WC requires at least: 3.0
