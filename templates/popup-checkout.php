@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-function popup( $idProduct,$textValidate,$textPayment ) {
+function popup( $idProduct, $textValidate, $textPayment ) {
 	$product         = wc_get_product( $idProduct );
 	$crosssell       = wc_get_product( get_post_meta( $idProduct, '_crosssell_ids' )[0][0] );
 	$active_gateways = array();
@@ -19,7 +19,7 @@ function popup( $idProduct,$textValidate,$textPayment ) {
             <input type="hidden" name="action" value="submitFormPopup">
             <input type="hidden" name="userKnow" value="no">
             <input type="hidden" name="codePromoApply" value="no">
-            <input type="hidden" name="textpayment" value="<?php echo $textPayment ?>" >
+            <input type="hidden" name="textpayment" value="<?php echo $textPayment ?>">
             <h2 id="productName" class="titleProduct"><?php echo $product->get_title() ?></h2>
             <hr/>
             <div class="info">
@@ -122,10 +122,10 @@ function popup( $idProduct,$textValidate,$textPayment ) {
 
 					<?php
 
-                    $tempCart = array();
-                    foreach (WC()->cart->cart_contents as $row => $val){
-	                    array_push($tempCart, $val["data"]);
-                    }
+					$tempCart = array();
+					foreach ( WC()->cart->cart_contents as $row => $val ) {
+						array_push( $tempCart, $val["data"] );
+					}
 
 					if ( $tempCart[0] instanceof WC_Product_Subscription ) {
 						$period = "";
@@ -148,11 +148,20 @@ function popup( $idProduct,$textValidate,$textPayment ) {
 						}
 
 						echo '<div id="totalPrice">' . $tempCart[0]->subscription_price . " " . $period . ' TTC</div>';
-						if ( intval($tempCart[0]->subscription_trial_length) > 0 ) {
+						if ( intval( $tempCart[0]->subscription_trial_length ) > 0 ) {
 							echo "<div class='trialTexte'>Une période d'essaie de" . $tempCart[0]->subscription_trial_length . " jours, puis le paiement récurrent</div>";
 						}
 					} else {
-						echo '<div id="totalPrice">' . WC()->cart->get_cart_total() . ' TTC</div>';
+						$regularPrice = 0;
+						foreach ( WC()->cart->get_cart_contents() as $productCart ) {
+							$regularPrice += floatval( $productCart["data"]->get_regular_price() );
+						}
+
+						if ( floatval( WC()->cart->get_totals()["total"] ) == $regularPrice ) {
+							echo '<div id="totalPrice">' . WC()->cart->get_cart_total() . ' TTC</div>';
+						} else {
+							echo '<div id="totalPrice">' . WC()->cart->get_cart_total() . ' TTC<div class="price_coupon_info"> au lieu de <span class="woocommerce-Price-amount amount"><bdi>'.number_format($regularPrice, 2, ',', ' ').'<span class="woocommerce-Price-currencySymbol">€</span></bdi></span> TTC</div></div>';
+						}
 					}
 					?>
 

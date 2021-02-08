@@ -24,7 +24,6 @@ function updateTotalPrice() {
             "action": "getTotalPrice"
         }
     }).success(function (result) {
-        console.log(result);
         submitWait(true);
         var resultats = result;
         if(result.responseJSON !== undefined){
@@ -33,7 +32,11 @@ function updateTotalPrice() {
         if(resultats.sold_price !== undefined ){
             jQuery("#totalPrice").html(resultats.sold_price + "<div class='price_coupon_info'> " + textAplyCoupon + " " + resultats.original_price + "</div>");
         }else{
-            jQuery("#totalPrice").html(resultats.original_price);
+            if(resultats.regular_price !== undefined ){
+                jQuery("#totalPrice").html(resultats.original_price + "<div class='price_coupon_info'> " + textAplyCoupon + " " + resultats.regular_price + "</div>");
+            }else {
+                jQuery("#totalPrice").html(resultats.original_price);
+            }
         }
 
     });

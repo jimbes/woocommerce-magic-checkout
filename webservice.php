@@ -34,17 +34,24 @@ function emailExist() {
 function getTotalPrice() {
 	header( "Content-Type: application/json" );
 
+	$regularPrice = 0;
+	foreach ( WC()->cart->get_cart_contents() as $productCart ) {
+		$regularPrice += floatval( $productCart["data"]->get_regular_price() );
+	}
+
 	if(count(WC()->cart->get_applied_coupons()) > 0) {
 		echo json_encode(
 			[
 				"original_price" => WC()->cart->get_cart_subtotal() . " TTC",
-				"sold_price"   => WC()->cart->get_cart_total() . " TTC"
+				"sold_price"   => WC()->cart->get_cart_total() . " TTC",
+				"regular_price"   => number_format($regularPrice, 2, ',', ' ') . " TTC"
 			]
 		);
 	}else{
 		echo json_encode(
 			[
-				"original_price" => WC()->cart->get_cart_total() . " TTC"
+				"original_price" => WC()->cart->get_cart_total() . " TTC",
+				"regular_price" => number_format($regularPrice, 2, ',', ' ') . " TTC"
 			]
 		);
 	}
