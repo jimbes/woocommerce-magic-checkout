@@ -158,9 +158,9 @@ function popup( $idProduct, $textValidate, $textPayment ) {
 						}
 
 						if ( floatval( WC()->cart->get_totals()["total"] ) == $regularPrice ) {
-							echo '<div id="totalPrice">' . WC()->cart->get_cart_total() . ' TTC</div>';
+							echo '<div id="totalPrice">' . WC()->cart->get_cart_total() . '</div>';
 						} else {
-							echo '<div id="totalPrice">' . WC()->cart->get_cart_total() . ' TTC<div class="price_coupon_info"> au lieu de <span class="woocommerce-Price-amount amount"><bdi>'.number_format($regularPrice, 2, ',', ' ').'<span class="woocommerce-Price-currencySymbol">€</span></bdi></span> TTC</div></div>';
+							echo '<div id="totalPrice">' . WC()->cart->get_cart_total() . '<div class="price_coupon_info"> au lieu de <span class="woocommerce-Price-amount amount"><bdi>'.number_format($regularPrice, 2, ',', ' ').'<span class="woocommerce-Price-currencySymbol">€</span></bdi></span></div></div>';
 						}
 					}
 					?>

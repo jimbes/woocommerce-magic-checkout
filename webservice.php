@@ -42,16 +42,16 @@ function getTotalPrice() {
 	if(count(WC()->cart->get_applied_coupons()) > 0) {
 		echo json_encode(
 			[
-				"original_price" => WC()->cart->get_cart_subtotal() . " TTC",
-				"sold_price"   => WC()->cart->get_cart_total() . " TTC",
-				"regular_price"   => number_format($regularPrice, 2, ',', ' ') . " TTC"
+				"original_price" => WC()->cart->get_cart_subtotal(),
+				"sold_price"   => WC()->cart->get_cart_total(),
+				"regular_price"   => number_format($regularPrice, 2, ',', ' ')."€"
 			]
 		);
 	}else{
 		echo json_encode(
 			[
-				"original_price" => WC()->cart->get_cart_total() . " TTC",
-				"regular_price" => number_format($regularPrice, 2, ',', ' ') . " TTC"
+				"original_price" => WC()->cart->get_cart_total(),
+				"regular_price" => number_format($regularPrice, 2, ',', ' ')."€"
 			]
 		);
 	}
