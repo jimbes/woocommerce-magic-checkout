@@ -116,7 +116,12 @@ if ( isset( $_GET["paiementMethod"] ) && ! empty( $_GET["paiementMethod"] ) ) {
 </form>
 
 <?php if ( isset( $_GET["ismagic"] ) ) {
-   if(!empty($paiementMethod) && $paiementMethod == "PayPal"){ ?>
+   if(!empty($paiementMethod) &&
+      (
+        strtolower($paiementMethod) == strtolower ("PayPal") ||
+        strtolower($paiementMethod) == strtolower ("PayPal Standard")
+        )
+   ){ ?>
 <script>
 
     function showLoader(container) {
