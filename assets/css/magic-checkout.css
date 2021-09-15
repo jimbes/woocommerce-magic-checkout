@@ -492,6 +492,16 @@
     font-size: 23px;
 }
 
+#issueCheckout{
+    text-align: center;
+    display: none;
+    width: 100%;
+    font-size: 0.7rem;
+    text-decoration: underline;
+    line-height: 1rem;
+    margin-top: 1rem;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);

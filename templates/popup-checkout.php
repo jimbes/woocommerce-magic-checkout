@@ -175,6 +175,7 @@ function popup( $idProduct, $textValidate, $textPayment ) {
                 <img src="<?php echo esc_url( plugins_url( '/assets/images/secured.png', dirname( __FILE__ ) ) ) ?>"
                      alt="Secure icone"/>
             </div>
+            <a id="issueCheckout">Cliquez ici si vous avez des difficultés</a>
         </form>
     </div>
 
